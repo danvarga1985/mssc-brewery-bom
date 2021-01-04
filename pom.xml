@@ -18,4 +18,61 @@
 
     <packaging>pom</packaging>
 
+    <licenses>
+        <license>
+            <name>GNU General Public Licence v3.0</name>
+            <url>https://www.gnu.org/licences/gpl.txt</url>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <name>Daniel Varga</name>
+        </developer>
+    </developers>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <java.version>11</java.version>
+        <maven.compiler.source>${java.version}</maven.compiler.source>
+        <maven.compiler.target>${java.version}</maven.compiler.target>
+        <jaxb.version>3.0.0</jaxb.version>
+        <jaxb.api.version>2.3.1</jaxb.api.version>
+        <mapstruct.version>1.4.1.Final</mapstruct.version>
+        <awaitility.version>4.0.2</awaitility.version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <!-- After Java 8, the jaxb packages are not part of the core libraries. -->
+            <dependency>
+                <groupId>javax.xml.bind</groupId>
+                <artifactId>jaxb-api</artifactId>
+                <version>${jaxb.api.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.sun.xml.bind</groupId>
+                <artifactId>jaxb-core</artifactId>
+                <version>${jaxb.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.sun.xml.bind</groupId>
+                <artifactId>jaxb-impl</artifactId>
+                <version>${jaxb.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.mapstruct</groupId>
+                <artifactId>mapstruct</artifactId>
+                <version>${mapstruct.version}</version>
+            </dependency>
+            <!-- Used for async testing. -->
+            <dependency>
+                <groupId>org.awaitility</groupId>
+                <artifactId>awaitility</artifactId>
+                <version>${awaitility.version}</version>
+                <scope>test</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 </project>
